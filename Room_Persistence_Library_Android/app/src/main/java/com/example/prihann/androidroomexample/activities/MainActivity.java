@@ -4,8 +4,12 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.prihann.androidroomexample.R;
+import com.example.prihann.androidroomexample.database.AppDatabase;
 import com.example.prihann.androidroomexample.model.Student;
 import com.example.prihann.androidroomexample.repo.StudentRepo;
+
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,16 +17,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Context  context = getApplicationContext();
+        Context  context = getApplicationContext();
 
-//        StudentRepo studentRepo = new StudentRepo(context);
-//        Student student = new Student();
-//        student.setStudentId("me123");
-//        student.setStudentName("prian");
-//        student.setStudentAge(22);
-//        student.setStudentCountry("LK");
-//        studentRepo.create(student);
+        StudentRepo studentRepo = new StudentRepo(context);
+        Student student = new Student();
+        student.setStudentId("me123");
+        student.setStudentName("prian");
+        student.setStudentAge(22);
+        student.setStudentCountry("LK");
+        studentRepo.create(student);
+
+
     }
+
 
 
 }

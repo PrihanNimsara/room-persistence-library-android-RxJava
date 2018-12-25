@@ -8,7 +8,7 @@ import android.content.Context;
 import com.example.prihann.androidroomexample.dao.StudentDao;
 import com.example.prihann.androidroomexample.model.Student;
 
-@Database(entities = {Student.class}, version = 4)
+@Database(entities = {Student.class}, version = 6,exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase appDatabaseInstance;
@@ -18,12 +18,13 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getAppDatabaseInstance(Context context) {
         if (appDatabaseInstance == null) {
             appDatabaseInstance = Room
-                    .databaseBuilder(context.getApplicationContext(), AppDatabase.class, "app_database_name")
+                    .databaseBuilder(context.getApplicationContext(), AppDatabase.class, "app_db_name")
                     .allowMainThreadQueries()
                     .build();
         }
         return appDatabaseInstance;
     }
+
 
     public static void destroyAppDatabaseInstance() {
         if (appDatabaseInstance != null) {

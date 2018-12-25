@@ -5,14 +5,18 @@ import android.arch.persistence.room.Query;
 import com.example.prihann.androidroomexample.model.Student;
 import java.util.List;
 
+import io.reactivex.Maybe;
+import io.reactivex.Single;
+
+
 @Dao
 public interface StudentDao extends BaseDao<Student>{
     @Query("SELECT * FROM student")
-    List<Student> getAllStudents();
+    Maybe<List<Student>> getAllStudents();
 
     @Query("SELECT * FROM student where student_id LIKE  :studentId")
-    Student findStudentByUsingStudentId(String studentId);
+    Maybe<Student> findStudentByUsingStudentId(String studentId);
 
     @Query("SELECT COUNT(*) from student")
-    int countStudents();
+    Maybe<Integer> countStudents();
 }

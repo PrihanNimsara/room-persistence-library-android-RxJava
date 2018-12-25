@@ -8,20 +8,25 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
+import io.reactivex.Completable;
+import io.reactivex.Maybe;
+import io.reactivex.Single;
+
+
 @Dao
 public interface BaseDao<T> {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(T object);
+    Completable insert(T object);
 
-    @Insert
-    void insertMultipleObject(T... objects);
-
-    @Insert
-    void insertMultipleListObject(List<T> objectList);
+//    @Insert
+//    Single<Long> insertMultipleObject(T... objects);
+//
+//    @Insert
+//    Single<Long> insertMultipleListObject(List<T> objectList);
 
     @Delete
-    void delete(T object);
+    Single<Integer> delete(T object);
 
     @Update
-    void update(T object);
+    Single<Integer> update(T object);
 }
